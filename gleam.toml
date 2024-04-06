@@ -19,6 +19,7 @@ gleam_json = "~> 0.6"
 gleam_erlang = "~> 0.23"
 mist = "~> 0.14"
 gleam_http = "~> 3.5"
+gleam_pgo = "~> 0.7"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"
