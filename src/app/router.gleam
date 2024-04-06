@@ -1,7 +1,8 @@
-import app/web
+import app/web.{type Context}
 import gleam/dynamic.{type Dynamic}
 import gleam/http.{Post}
 import gleam/json
+import gleam/pgo
 import gleam/result
 import wisp.{type Request, type Response}
 
@@ -19,7 +20,7 @@ fn decode_fund(json: Dynamic) -> Result(Fund, dynamic.DecodeErrors) {
   decoder(json)
 }
 
-pub fn handle_request(req: Request) -> Response {
+pub fn handle_request(req: Request, ctx: Context) -> Response {
   use req <- web.middleware(req)
   use <- wisp.require_method(req, Post)
 
@@ -27,6 +28,24 @@ pub fn handle_request(req: Request) -> Response {
 
   let result = {
     use fund <- result.try(decode_fund(json))
+
+    let sql =
+      "
+      insert into transaction
+        (symbol, amount) 
+      values 
+        ($1, $2)
+      returning
+        id
+    "
+
+    let assert Ok(_id) =
+      pgo.execute(
+        sql,
+        ctx.db,
+        [pgo.text(fund.symbol), pgo.float(fund.amount)],
+        dynamic.element(0, dynamic.int),
+      )
 
     let object =
       json.object([

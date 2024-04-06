@@ -5,7 +5,7 @@ services:
     container_name: youfunds-db
     image: postgres:latest
     ports:
-      - "5492:5432"
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=youfunds
