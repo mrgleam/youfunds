@@ -1,20 +1,20 @@
-# myfunds
+# youfunds
 
-[![Package Version](https://img.shields.io/hexpm/v/myfunds)](https://hex.pm/packages/myfunds)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/myfunds/)
+[![Package Version](https://img.shields.io/hexpm/v/youfunds)](https://hex.pm/packages/youfunds)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/youfunds/)
 
 ```sh
-gleam add myfunds
+gleam add youfunds
 ```
 ```gleam
-import myfunds
+import youfunds
 
 pub fn main() {
   // TODO: An example of the project in use
 }
 ```
 
-Further documentation can be found at <https://hexdocs.pm/myfunds>.
+Further documentation can be found at <https://hexdocs.pm/youfunds>.
 
 ## Development
 
